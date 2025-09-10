@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: spring-batch-settlement-system
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        orm:
+          jdbc:
+            bind: trace
+    com:
+      example:
+        demo: debug
+
+server:
+  port: 8080
+
+# Spring Batch 설정
+spring:
+  batch:
+    job:
+      enabled: false # 앱 시작 시 자동 실행 방지
+    jdbc:
+      initialize-schema: always # 스키마 자동 생성
+
+# Swagger/OpenAPI 3 설정
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /api-docs
+  show-actuator: true
